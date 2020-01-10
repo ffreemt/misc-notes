@@ -1,1 +1,8 @@
-git init 
+---
+git init
+    github +fmt misc-notes
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:ffreemt/misc-notes.git
+    git remote -v
+git push -u origin master
