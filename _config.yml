@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 'Misc Notes'
 subtitle: ''
 description: ''
-keywords:
-author: John Doe
+keywords: test, vue, vps, ai, python, nodejs
+author: mu
 language: en
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://misc-notes.netlify.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

@@ -6,3 +6,19 @@ git commit -m "first commit"
 git remote add origin git@github.com:ffreemt/misc-notes.git
     git remote -v
 git push -u origin master
+
+---
+netlify
+    add github repo to netlify
+
+        We recommend using NS1 or Netlify’s built-in DNS service for this.
+
+        mnote.tk ALIAS misc-notes.netlify.com.
+
+        Alternative: point A record to 104.198.14.52
+
+        Create an A record for mnote.tk pointing to our load balancer’s IP address 104.198.14.52.
+
+        mnote.tk A 104.198.14.52
+
+        Warning! With your current configuration, you won’t benefit from the full advantages of a CDN if you use an A record.
