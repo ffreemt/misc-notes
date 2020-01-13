@@ -1,8 +1,17 @@
 ---
+blogging
+	hexo new "title"
+	hexo new page --path "title"
+---
 update theme next
 	https://theme-next.iissnan.com/getting-started.html
 	cd to blog-articles
 	git clone https://github.com/iissnan/hexo-theme-next themes/next
+---
+plugin
+	npm install hexo-deployer-git
+	hexo g
+	hexo d
 ---
 git init
     github +fmt misc-notes
