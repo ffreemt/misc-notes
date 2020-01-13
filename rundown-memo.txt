@@ -1,4 +1,9 @@
 ---
+update theme next
+	https://theme-next.iissnan.com/getting-started.html
+	cd to blog-articles
+	git clone https://github.com/iissnan/hexo-theme-next themes/next
+---
 git init
     github +fmt misc-notes
 git add .
