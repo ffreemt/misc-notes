@@ -100,14 +100,13 @@ new Vue({
 以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`框架库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
 ## 绑定
 ### `v-bind`: 单向绑定
-`bing.html`
+`binding.html`
 ```html
 <div id="app"></div>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script type="module" src="binding.js"></script>
 ```
-
 `binding.js`
 ```javascript
 const templ = `
