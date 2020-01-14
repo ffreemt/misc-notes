@@ -52,7 +52,7 @@ tags: ['vue', 'vuejs', 'vue.js']
 <script type="module" src="vue-hello.js"></script>
 ```
 `vue-hello.js`
-```js
+```Javascript
 import Vue from "https://unpkg.com/vue/dist/vue.esm.browser.js";
 
 new Vue({
@@ -77,7 +77,7 @@ http://127.0.0.1:8000/vue-hello.html
 
 ## `html`及`js`文件样本
 前一个例子`vue-hello.js`里用了
-```js
+```javascript
 import Vue from "https://unpkg.com/vue/dist/vue.esm.browser.js";
 ```
 里面的`vue.esm.browser.js`看上去不太和谐。因此我们以后将使用如下的 `html`和`js`——在html里导入`vue.js`。`hello.html`:
@@ -95,7 +95,7 @@ new Vue({
   template: "<div>{{ msg }}</div>"
 });
 ```
-启动`http服务器`（例如 `python -m httml.server` 或 `http-server`）。浏览器指向对应的端口及`uri`（例如`http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
+启动`http服务器`（例如 `python -m httml.server` 或 `http-server`）。浏览器指向对应的端口及`uri`（例如 `http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
 
 以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`框架库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
 ## 绑定
