@@ -8,6 +8,7 @@ tags: ['vue', 'vuejs', 'vue.js']
 本文并非教程。如果会点node，最好的教程自然是vuejs官方教程。
 
 写本文的初衷是因为在学习vue的过程中，依靠node环境的话往往会陷入各种设置的汪洋之中，而依靠codepen之类的网站又往往有些隔靴搔痒的感觉——写的vue已经工作了，却仍然不知道是到底怎么回事。
+
 ## 所需工具
 * 浏览器
 * 文本编辑器（如 vscode，notepad++， vim等等）
@@ -94,9 +95,33 @@ new Vue({
   template: "<div>{{ msg }}</div>"
 });
 ```
-启动`http服务器`（例如 `python -m httml.server` 或 `http-server`。浏览器指向对应的端口及`uri`（例如`http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
+启动`http服务器`（例如 `python -m httml.server` 或 `http-server`）。浏览器指向对应的端口及`uri`（例如`http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
 
 以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`架构库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
+## `v-bind`: 单向绑定
+`bing.html`
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="binding.js"></script>
+```
+
+`binding.js`
+```javascript
+const templ = `
+<div>
+<input placeholder="edit me" v-bind:value="msg" />
+<p>Message is: {{ msg }}</p>
+</div>
+`
+
+new Vue({
+  el: "#app",
+  data: { msg: "hello from vue" },
+  template: templ
+});
+```
 
 ## `v-model`: 可能有点用处的例子`editme.js`
 `editme.html`
