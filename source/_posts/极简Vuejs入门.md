@@ -97,7 +97,7 @@ new Vue({
 ```
 启动`http服务器`（例如 `python -m httml.server` 或 `http-server`）。浏览器指向对应的端口及`uri`（例如`http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
 
-以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`架构库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
+以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`框架库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
 ## 绑定
 ### `v-bind`: 单向绑定
 `bing.html`
