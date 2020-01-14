@@ -98,7 +98,8 @@ new Vue({
 启动`http服务器`（例如 `python -m httml.server` 或 `http-server`）。浏览器指向对应的端口及`uri`（例如`http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
 
 以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`架构库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
-## `v-bind`: 单向绑定
+## 绑定
+### `v-bind`: 单向绑定
 `bing.html`
 ```html
 <div id="app"></div>
@@ -115,15 +116,19 @@ const templ = `
 <p>Message is: {{ msg }}</p>
 </div>
 `
-
 new Vue({
   el: "#app",
   data: { msg: "hello from vue" },
   template: templ
 });
 ```
-
-## `v-model`: 可能有点用处的例子`editme.js`
+`<input />`的 `value` 绑定在vue实例`data`的`msg`的值（即`hello from vue`），而且是即时反应的，`msg`变化时，`<input />`的 `value`即时变化。可以打开`devtools`的`console`终端输入
+```bash
+vm0._data.msg = 'hello again'
+```
+`<input />`的 `value`即时显示为`hello again`
+### `v-model`: 双向绑定
+而如果我们在`<input />`框里改变`value`，`Message is:  hello from vue`却不会变化。要达到所谓的双向绑定（改变`<input />`的 `value`时vue实例的`msg`也跟着变化，就需要用到`v-model`。
 `editme.html`
 ```html
 <div id="app"></div>
@@ -139,7 +144,6 @@ const templ = `
 <p>Message is: {{ msg }}</p>
 </div>
 `
-
 new Vue({
   el: "#app",
   data: { msg: "" },
