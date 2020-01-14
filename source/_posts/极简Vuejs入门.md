@@ -3,12 +3,17 @@ title: 极简Vuejs入门
 date: 2020-01-13 13:11:15
 tags: ['vue', 'vuejs', 'vue.js']
 ---
-基于浏览器和CDN，即是说，无需nodejs环境。
+本文的vue部分完全基于浏览器和CDN，即是说，无需nodejs环境。
+
+本文并非教程。如果会点node，最好的教程自然是vuejs官方教程。
+
+写本文的初衷是因为在学习vue的过程中，依靠node环境的话往往会陷入各种设置的汪洋之中，而依靠codepen之类的网站又往往有些隔靴搔痒的感觉——写的vue已经工作了，却仍然不知道是到底怎么回事。
 ## 所需工具
 * 浏览器
-* 文本编辑器（如 vscode，notepadd++， vim等等）
+* 文本编辑器（如 vscode，notepad++， vim等等）
 * 浏览器扩展 [Vue.js devtools](https://github.com/vuejs/vue-devtools)：用于查看Vue组件的结构
 * 第三个例子开始需要`web/http`服务器
+* 最好能学会用浏览器的`devtools`及安装`vue-devtools`扩展
 ## 几个极简例子
 ### 少于十行码的 vue 网页
 用文本编辑器生成以下名为 `vue-hello-world.html` 的文件
@@ -24,8 +29,8 @@ tags: ['vue', 'vuejs', 'vue.js']
 </script>
 ```
 存盘后双击`vue-hello-world.html`，浏览器会显示`hello from vue`
-### 少于十行码的 vue 网页改进版
-修改`vue-hello-world.html` 文件存为`vue-hello-world1.html`：进一步html和js：
+### 改进版: 少于十行码的 vue 网页
+修改`vue-hello-world.html` 文件存为`vue-hello-world1.html`：进一步分离html和js：
 ```html
 <div id="app"></div>
 
@@ -68,5 +73,53 @@ http-server
 http://127.0.0.1:8000/vue-hello.html
 ```
 浏览器显示`hello from vue`
+
+## `html`及`js`文件样本
+前一个例子`vue-hello.js`里用了
+```js
+import Vue from "https://unpkg.com/vue/dist/vue.esm.browser.js";
+```
+里面的`vue.esm.browser.js`看上去不太和谐。因此我们以后将使用如下的 `html`和`js`——在html里导入`vue.js`。`hello.html`:
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="hello.js"></script>
+```
+`hello.js`:
+```javascript
+new Vue({
+  el: "#app",
+  data: { msg: "hello from vue" },
+  template: "<div>{{ msg }}</div>"
+});
+```
+启动`http服务器`（例如 `python -m httml.server` 或 `http-server`。浏览器指向对应的端口及`uri`（例如`http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
+
+以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`架构库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
+
+## `v-model`: 可能有点用处的例子`editme.js`
+`editme.html`
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="editme.js"></script>
+```
+`editme.js`
+```
+const templ = `
+<div>
+<input placeholder="edit me" v-model="msg" />
+<p>Message is: {{ msg }}</p>
+</div>
+`
+
+new Vue({
+  el: "#app",
+  data: { msg: "" },
+  template: templ
+});
+```
 
 (有时间再继续)
