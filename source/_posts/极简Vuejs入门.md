@@ -318,10 +318,61 @@ vue serve CompoOne.vue
 浏览器指向对应的端口（例如 `http://localhost:8081/`）显示`message from compo-one: hello from compo-one`。
 
 
-### `props`
+### `props` 组件传参
+组件的意义在于可以传入不同的参数多次使用，`props`就是用来传参的。
 
-#### 组件传参
+`app2.html`:
+```html
+<div id="app"></div>
 
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="app2.js"></script>
 
+```
+
+`app2.js`:
+```javascript
+import CompoTwo from "./CompoTwo.js";
+
+const templ = `
+  <div>
+    compo-two name="Alice": <compo-two name="Bob"></compo-two>
+    <br/>
+    compo-two: name="Bob" <compo-two  name="Alice"></compo-two>
+  </div>
+`;
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      msg: ""
+    };
+  },
+  components: { CompoTwo },
+  template: templ
+});
+
+```
+
+`CompoTwo.js`:
+```javascript
+export default {
+  data: function() {
+    return { compoMsg: "hey " + this.name + " hello from compo-two" };
+  },
+  props: ['name'],
+  template: "<div>message from compo-two: {{ compoMsg }} to {{ name }} </div>"
+};
+
+```
+
+浏览器指向 `http://127.0.0.1:8080/app2.html`, 显示
+```txt
+compo-two name="Alice":
+message from compo-two: hey Bob hello from compo-two to Bob
+
+compo-two: name="Bob"
+message from compo-two: hey Alice hello from compo-two to Alice
+```
 
 (有时间再继续)
