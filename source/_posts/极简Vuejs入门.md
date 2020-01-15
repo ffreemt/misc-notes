@@ -3,19 +3,21 @@ title: 极简Vuejs入门
 date: 2020-01-13 13:11:15
 tags: ['vue', 'vuejs', 'vue.js']
 ---
+## 准备工作
+### 引言
 本文的vue部分完全基于浏览器和CDN，即是说，无需nodejs环境。
 
 本文并非教程。如果会点node，最好的教程自然是vuejs官方教程。
 
 写本文的初衷是因为在学习vue的过程中，依靠node环境的话往往会陷入各种设置的汪洋之中，而依靠codepen之类的网站又往往有些隔靴搔痒的感觉——写的vue已经工作了，却仍然不知道到底是怎么回事。
 本文的特点：没什么废话，每个例子都是极简。真正搞懂了一个例子就了解了一个相关的概念。
-## 所需工具
+### 所需工具
 * 浏览器
 * 文本编辑器（如 vscode，notepad++， vim等等）
 * 浏览器扩展 [Vue.js devtools](https://github.com/vuejs/vue-devtools)：用于查看Vue组件的结构
 * 第三个例子开始需要`web/http`服务器
 * 最好能学会用浏览器的`devtools`及安装`vue-devtools`扩展
-## 几个极简例子
+### 几个极简例子
 ### 少于十行码的 vue 网页
 用文本编辑器生成以下名为 `vue-hello-world.html` 的文件
 ```html
@@ -30,7 +32,7 @@ tags: ['vue', 'vuejs', 'vue.js']
 </script>
 ```
 存盘后双击`vue-hello-world.html`，浏览器会显示`hello from vue`
-### 改进版: 少于十行码的 vue 网页
+#### 改进版: 少于十行码的 vue 网页
 修改`vue-hello-world.html` 文件存为`vue-hello-world1.html`：进一步分离html和js：
 ```html
 <div id="app"></div>
@@ -45,7 +47,7 @@ tags: ['vue', 'vuejs', 'vue.js']
 </script>
 ```
 存盘后双击`vue-hello-world1.html`，浏览器会显示`hello from vue`
-### `vue-hello-world1.html`分离成`html`和`js`文件
+#### `vue-hello-world1.html`分离成`html`和`js`文件
 `vue-hello.html`:
 ```html
 <div id="app"></div>
@@ -75,7 +77,7 @@ http://127.0.0.1:8000/vue-hello.html
 ```
 浏览器显示`hello from vue`
 
-## `html`及`js`文件样本
+#### `html`及`js`文件样本
 前一个例子`vue-hello.js`里用了
 ```javascript
 import Vue from "https://unpkg.com/vue/dist/vue.esm.browser.js";
@@ -98,7 +100,7 @@ new Vue({
 启动`http服务器`（例如 `python -m httml.server` 或 `http-server`）。浏览器指向对应的端口及`uri`（例如 `http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
 
 以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`框架库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
-## 绑定
+## `v-bind` 和 `v-model` 绑定
 ### `v-bind`: 单向绑定
 `binding.html`
 ```html
