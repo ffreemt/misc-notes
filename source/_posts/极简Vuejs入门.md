@@ -7,8 +7,8 @@ tags: ['vue', 'vuejs', 'vue.js']
 
 本文并非教程。如果会点node，最好的教程自然是vuejs官方教程。
 
-写本文的初衷是因为在学习vue的过程中，依靠node环境的话往往会陷入各种设置的汪洋之中，而依靠codepen之类的网站又往往有些隔靴搔痒的感觉——写的vue已经工作了，却仍然不知道是到底怎么回事。
-
+写本文的初衷是因为在学习vue的过程中，依靠node环境的话往往会陷入各种设置的汪洋之中，而依靠codepen之类的网站又往往有些隔靴搔痒的感觉——写的vue已经工作了，却仍然不知道到底是怎么回事。
+本文的特点：没什么废话，每个例子都是极简。真正搞懂了一个例子就了解了一个相关的概念。
 ## 所需工具
 * 浏览器
 * 文本编辑器（如 vscode，notepad++， vim等等）
@@ -180,7 +180,7 @@ new Vue({
 });
 ```
 浏览器指向`http://127.0.0.1:8080/click-say-hello.html`, 点击`Say it` 后浏览器显示：
-![click say hello](img/click-say-hello.png)
+![click say hello](./img/click-say-hello.png)
 
 
 (有时间再继续)

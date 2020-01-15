@@ -9,6 +9,7 @@ setlocal
     set comment=%*
     echo comment: %comment%
     REM git commit -am "%comment%" && git push
+	git add .
     git commit -am "%comment%" && git push
     GOTO END
 :HAVE_0
