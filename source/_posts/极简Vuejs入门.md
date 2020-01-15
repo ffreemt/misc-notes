@@ -136,7 +136,7 @@ vm0._data.msg = 'hello again'
 <script type="module" src="editme.js"></script>
 ```
 `editme.js`
-```
+```Javascript
 const templ = `
 <div>
 <input placeholder="edit me" v-model="msg" />
@@ -149,5 +149,38 @@ new Vue({
   template: templ
 });
 ```
+##`v-on`和`method`
+`click-say-hello.html`
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="click-say-hello.js"></script>
+```
+click-say-hello.js
+```Javascript
+new Vue({
+  el: "#app",
+  data() {
+        return {
+					msg: ""
+        }
+	},
+	methods: {
+		hello: function(evt) {
+			this.msg = "hellooo..."
+		}
+	},
+  template: `
+	<div>
+		<button v-on:click="hello">Say it</button>
+		<p>Saying: {{ msg }}</p>
+	</div>
+	`
+});
+```
+浏览器指向`http://127.0.0.1:8080/click-say-hello.html`, 点击`Say it` 后浏览器显示：
+![click say hello](img/click-say-hello.png)
+
 
 (有时间再继续)
