@@ -14,9 +14,8 @@ tags: ['vue', 'vuejs', 'vue.js']
 ### 所需工具
 * 浏览器
 * 文本编辑器（如 vscode，notepad++， vim等等）
-* 浏览器扩展 [Vue.js devtools](https://github.com/vuejs/vue-devtools)：用于查看Vue组件的结构
 * 第三个例子开始需要`web/http`服务器
-* 最好能学会用浏览器的`devtools`及安装`vue-devtools`扩展
+* 最好能学会用浏览器的`devtools`（偶尔交互运行javascript）及安装浏览器扩展 [Vue.js devtools](https://github.com/vuejs/vue-devtools)（用于查看Vue组件的结构）
 ### 几个极简例子
 #### 少于十行码的 vue 网页
 用文本编辑器生成以下名为 `vue-hello-world.html` 的文件
@@ -152,7 +151,7 @@ new Vue({
   template: templ
 });
 ```
-## `v-on`和`method`
+## `v-on` 和 `method`
 `click-say-hello.html`
 ```html
 <div id="app"></div>
