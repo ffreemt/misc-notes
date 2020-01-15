@@ -180,7 +180,7 @@ new Vue({
 });
 ```
 浏览器指向`http://127.0.0.1:8080/click-say-hello.html`, 点击`Say it` 后浏览器显示：
-![click say hello](./img/click-say-hello.png)
+![click say hello](/img/click-say-hello.png)
 
 
 (有时间再继续)
