@@ -295,7 +295,7 @@ message from compo-one: hello from compo-one
 ```
 
 #### 题外话：`CompoOne.js` 转 `CompoOne.vue`
-只需将 `CompoOne.js` 里的 `template`部分分离出来放在`<template></template>`里，再在其余部分加上 `<script></script>`，就可以转换成nodejs环境下用组件。
+只需将 `CompoOne.js` 里的 `template`部分分离出来放在`<template></template>`里，再在其余部分加上 `<script></script>`，就可以转换成nodejs环境下用的组件。
 
 `CompoOne.vue`：
 ```vue
@@ -422,7 +422,121 @@ export default {
 
 ```
 
-在框里输入 `me`, 浏览器显示
+浏览器指向 `http://127.0.0.1:8080/app3.html`，在框里输入 `me`, 浏览器显示
 ![app3](/img/app3.png)
+
+## `computed` 和 `watch`
+
+前面的组件是在 `template` 里调用 `props`。如想在组件的data里调用则要利用 `vue` 的 `computed` 或 `watch`。例如，下面的做法并不能获取`props`的当前值。
+
+`app-foura.html`:
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="app4a.js"></script>
+
+```
+
+`app-foura.js`:
+```javascript
+import CompoFoura from "./CompoFoura.js";
+
+const templ = `
+  <div>
+    <input placeholder="Type your name" v-model="msg" />
+    <br/>
+    <compo-foura v-bind:name="msg"></compo-foura>
+  </div>
+`;
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      msg: ""
+    };
+  },
+  components: { CompoFoura },
+  template: templ
+});
+
+```
+
+`CompoFoura.js`:
+```javascript
+export default {
+  data: function() {
+    return { compoMsg: this.name };
+  },
+  props: ["name"],
+  template: "<div>Hello {{ compoMsg }}! </div>"
+};
+
+```
+浏览器指向 `http://127.0.0.1:8080/app4a.html`, 但用户输入时，`compoMsg`并无变化：
+![app4a](/img/app4a.png)
+用户输入 `me` 时，浏览器只显示 `Hello!`，不显示 `Hello me!`。
+
+### 组件 `props` 的使用
+
+`app-four.html`:
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="app4.js"></script>
+
+```
+
+`app-four.js`:
+```javascript
+import CompoFour from "./CompoFour.js";
+
+const templ = `
+  <div>
+    <input placeholder="Type your name" v-model="msg" />
+    <br/>
+    <compo-four v-bind:name="msg"></compo-four>
+  </div>
+`;
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      msg: ""
+    };
+  },
+  components: { CompoFour },
+  template: templ
+});
+
+
+```
+
+`CompoFour.js`:
+```javascript
+export default {
+  data: function() {
+    return { compoMsg: this.name };
+  },
+  props: ["name"],
+  watch: {
+    name: function(newQuery, oldQuery) {
+      this.compoMsg = newQuery
+    }
+  },
+  computed: {
+    phraseFromParen: function() {
+      return this.name;
+    }
+  },
+  template: "<div>Hello {{ compoMsg }}/{{ phraseFromParen }}! </div>"
+};
+
+```
+浏览器指向 `http://127.0.0.1:8080/app4.html`, 用户输入 `me` 时，`compoMsg` 和 phraseFromParen 随着变化（显示`Hello me/me!`）：
+![app4](/img/app4.png)
+
+
 
 (有时间再继续)
