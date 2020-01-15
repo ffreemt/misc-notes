@@ -11,11 +11,13 @@ tags: ['vue', 'vuejs', 'vue.js']
 
 写本文的初衷是因为在学习vue的过程中，依靠node环境的话往往会陷入各种设置的汪洋之中，而依靠codepen之类的网站又往往有些隔靴搔痒的感觉——写的vue已经工作了，却仍然不知道到底是怎么回事。
 本文的特点：没什么废话，每个例子都是极简。真正搞懂了一个例子就了解了一个相关的概念。
+
 ### 所需工具
-* 浏览器
+* 浏览器（如Chrome、Firefox等）
 * 文本编辑器（如 vscode，notepad++， vim等等）
 * 第三个例子开始需要`web/http`服务器
 * 最好能学会用浏览器的`devtools`（偶尔交互运行javascript）及安装浏览器扩展 [Vue.js devtools](https://github.com/vuejs/vue-devtools)（用于查看Vue组件的结构）
+
 ### 几个极简例子
 #### 少于十行码的 vue 网页
 用文本编辑器生成以下名为 `vue-hello-world.html` 的文件
@@ -31,6 +33,7 @@ tags: ['vue', 'vuejs', 'vue.js']
 </script>
 ```
 存盘后双击`vue-hello-world.html`，浏览器会显示`hello from vue`
+
 #### 改进版: 少于十行码的 vue 网页
 修改`vue-hello-world.html` 文件存为`vue-hello-world1.html`：进一步分离html和js：
 ```html
@@ -46,6 +49,7 @@ tags: ['vue', 'vuejs', 'vue.js']
 </script>
 ```
 存盘后双击`vue-hello-world1.html`，浏览器会显示`hello from vue`
+
 #### 分离`html`和`js`文件
 
 `vue-hello.html`:
@@ -100,6 +104,7 @@ new Vue({
 启动`http服务器`（例如 `python -m httml.server` 或 `http-server`）。浏览器指向对应的端口及`uri`（例如 `http://127.0.0.1:8000/hello.html` ）后显示 `hello from vue`
 
 以后要用到第三方`js`库也会放在`html`文件里，另外需要用`css`框架库(bootstrap, bulma, buefy, element等等)及图标库（Font Awesome，Material Design等）时也会放在`html`文件的头`<head></head>`里。
+
 ## `v-bind` 和 `v-model` 绑定
 ### `v-bind`: 单向绑定
 `binding.html`
@@ -109,6 +114,7 @@ new Vue({
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script type="module" src="binding.js"></script>
 ```
+
 `binding.js`
 ```javascript
 const templ = `
@@ -123,11 +129,15 @@ new Vue({
   template: templ
 });
 ```
-`<input />`的 `value` 绑定在vue实例`data`的`msg`的值（即`hello from vue`），而且是即时反应的，`msg`变化时，`<input />`的 `value`即时变化。可以打开`devtools`的`console`终端输入
+`<input />`的 `value` 绑定在vue实例`data`的`msg`的值（即`hello from vue`），而且是即时反应的，`msg`变化时，`<input />`的 `value`即时变化。可以打开`devtools`，点击Vue卡（需要先安装浏览器扩展 [Vue.js devtools](https://github.com/vuejs/vue-devtools)）里的Root
+![Vue-devtools](/img/vue-root.png)
+
+再在`console`终端卡里输入
 ```bash
-vm0._data.msg = 'hello again'
+$vm0._data.msg = 'hello again'
 ```
 `<input />`的 `value`即时显示为`hello again`
+
 ### `v-model`: 双向绑定
 而如果我们在`<input />`框里改变`value`，`Message is:  hello from vue`却不会变化。要达到所谓的双向绑定（改变`<input />`的 `value`时vue实例的`msg`也跟着变化，就需要用到`v-model`。
 `editme.html`
