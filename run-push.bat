@@ -14,5 +14,5 @@ setlocal
 :HAVE_0
     echo.
     echo Provide at least one word as comment
-    git commit -am "update" && git push
+    git add . && git commit -am "update" && git push
 :END

@@ -380,7 +380,7 @@ message from compo-two: hey Alice hello from compo-two to Alice
 #### 父组件传参
 利用 v-bind 可以传入父组件的数据，从而可以获取用户的输入。
 
-`app3.html`
+`app3.html`：
 ```html
 <div id="app"></div>
 
@@ -389,7 +389,7 @@ message from compo-two: hey Alice hello from compo-two to Alice
 
 ```
 
-`app3.js`
+`app3.js`：
 ```javascript
 import CompoThree from "./CompoThree.js";
 
@@ -413,7 +413,7 @@ new Vue({
 
 ```
 
-`CompoThree.js`
+`CompoThree.js`：
 ```javascript
 export default {
   props: ['name'],
