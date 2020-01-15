@@ -321,6 +321,8 @@ vue serve CompoOne.vue
 ### `props` 组件传参
 组件的意义在于可以传入不同的参数多次使用，`props`就是用来传参的。
 
+#### 传固定参数
+
 `app2.html`:
 ```html
 <div id="app"></div>
@@ -374,5 +376,53 @@ message from compo-two: hey Bob hello from compo-two to Bob
 compo-two: name="Bob"
 message from compo-two: hey Alice hello from compo-two to Alice
 ```
+
+#### 父组件传参
+利用 v-bind 可以传入父组件的数据，从而可以获取用户的输入。
+
+`app3.html`
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="app3.js"></script>
+
+```
+
+`app3.js`
+```javascript
+import CompoThree from "./CompoThree.js";
+
+const templ = `
+  <div>
+    <input placeholder="Type your name" v-model="msg" />
+    <br/>
+    <compo-three v-bind:name="msg"></compo-three>
+  </div>
+`;
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      msg: ""
+    };
+  },
+  components: { CompoThree },
+  template: templ
+});
+
+```
+
+`CompoThree.js`
+```javascript
+export default {
+  props: ['name'],
+  template: "<div>Hello {{ name }}! </div>"
+};
+
+```
+
+在框里输入 `me`, 浏览器显示
+![app3](/img/app3.png)
 
 (有时间再继续)
