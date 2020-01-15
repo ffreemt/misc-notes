@@ -245,8 +245,8 @@ compo-one in #app:
 message from compo-one: hello from compo-one
 ```
 
-### `SPA Component`
-将 `compo1.js` 里的 `CompoOne` 分离出来成为单独一个文件就成了所谓的 `Single Page App` 组件。
+### `SFC: Single File Component`
+将 `compo1.js` 里的 `CompoOne` 分离出来成为单独一个文件就成了所谓的 `Single File Component` 组件。
 
 `app1.html`:
 ```html
@@ -537,6 +537,7 @@ export default {
 浏览器指向 `http://127.0.0.1:8080/app4.html`, 用户输入 `me` 时，`compoMsg` 和 phraseFromParen 随着变化（显示`Hello me/me!`）：
 ![app4](/img/app4.png)
 
+## axios
 
 
 (有时间再继续)
