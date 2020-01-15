@@ -149,7 +149,7 @@ new Vue({
   template: templ
 });
 ```
-##`v-on`和`method`
+## `v-on`和`method`
 `click-say-hello.html`
 ```html
 <div id="app"></div>
@@ -157,20 +157,21 @@ new Vue({
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script type="module" src="click-say-hello.js"></script>
 ```
-click-say-hello.js
+
+`click-say-hello.js`
 ```Javascript
 new Vue({
   el: "#app",
   data() {
-        return {
-					msg: ""
-        }
-	},
-	methods: {
-		hello: function(evt) {
-			this.msg = "hellooo..."
-		}
-	},
+    return {
+      msg: ""
+    };
+  },
+  methods: {
+    hello: function(evt) {
+      this.msg = "hellooo...";
+    }
+  },
   template: `
 	<div>
 		<button v-on:click="hello">Say it</button>
