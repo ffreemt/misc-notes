@@ -195,5 +195,104 @@ new Vue({
 浏览器指向`http://127.0.0.1:8080/click-say-hello.html`, 点击`Say it` 后浏览器显示：
 ![click say hello](/img/click-say-hello.png)
 
+## `components`: `Vue.component`
+### 简单`Component`
+`compo1.html`:
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="compo1.js"></script>
+```
+
+`compo1.js`:
+```javascript
+const CompoOne = Vue.component("compo-one", {
+  data: function() {
+    return { compoMsg: "hello from compo-one" };
+  },
+  template: "<div>message from compo-one: {{ compoMsg }} </div>"
+});
+
+const templ = `
+  <div>
+    compo-one in #app: <compo-one></compo-one>
+  </div>
+`;
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      msg: ""
+    };
+  },
+  components: { CompoOne },
+  template: templ
+});
+
+```
+
+浏览器指向 `http://127.0.0.1:8080/compo1.html`显示
+```txt
+compo-one in #app:
+message from compo-one: hello from compo-one
+```
+
+### `SPA Component`
+将 `compo1.js` 里的 `CompoOne` 分离出来成为单独一个文件就成了所谓的 `Single Page App` 组件。
+
+`app1.html`:
+```html
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="module" src="app1.js"></script>
+```
+
+`app1.js`:
+```javascript
+import CompoOne from "./CompoOne.js";
+
+const templ = `
+  <div>
+    compo-one in #app: <compo-one></compo-one>
+  </div>
+`;
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      msg: ""
+    };
+  },
+  components: { CompoOne },
+  template: templ
+});
+```
+
+`CompoOne.js`:
+```javascript
+export default {
+  data: function() {
+    return { compoMsg: "hello from compo-one" };
+  },
+  template: "<div>message from compo-one: {{ compoMsg }} </div>"
+};
+```
+
+浏览器指向 `http://127.0.0.1:8080/app1.html`, 显示和上一个例子的输出相同
+
+```txt
+compo-one in #app:
+message from compo-one: hello from compo-one
+```
+
+### `props`
+
+#### 组件传参
+
+
+####
+
 
 (有时间再继续)
