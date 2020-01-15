@@ -18,7 +18,7 @@ tags: ['vue', 'vuejs', 'vue.js']
 * 第三个例子开始需要`web/http`服务器
 * 最好能学会用浏览器的`devtools`及安装`vue-devtools`扩展
 ### 几个极简例子
-### 少于十行码的 vue 网页
+#### 少于十行码的 vue 网页
 用文本编辑器生成以下名为 `vue-hello-world.html` 的文件
 ```html
 <div id="app">{{ msg }}</div>
@@ -47,7 +47,8 @@ tags: ['vue', 'vuejs', 'vue.js']
 </script>
 ```
 存盘后双击`vue-hello-world1.html`，浏览器会显示`hello from vue`
-#### `vue-hello-world1.html`分离成`html`和`js`文件
+#### 分离`html`和`js`文件
+
 `vue-hello.html`:
 ```html
 <div id="app"></div>
@@ -77,7 +78,7 @@ http://127.0.0.1:8000/vue-hello.html
 ```
 浏览器显示`hello from vue`
 
-#### `html`及`js`文件样本
+### `html`及`js`文件样本
 前一个例子`vue-hello.js`里用了
 ```javascript
 import Vue from "https://unpkg.com/vue/dist/vue.esm.browser.js";
