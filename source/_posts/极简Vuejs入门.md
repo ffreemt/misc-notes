@@ -628,5 +628,138 @@ export default {
 
 ![axiox-get](/img/axiox-get.png)
 
+## 整合 `UI` 框架`Buefy`
 
-(有时间再继续)
+UI框架也可以整合进去。同时 `html` 文件也整得规范了一点。
+
+`buefy-search.html`:
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script type="module" src="buefy-search.js"></script>
+  </body>
+</html>
+
+```
+
+`buefy-search.js`:
+```javascript
+import BuefySearchCompo from "./buefy-search-compo.js";
+
+const templ = `
+  <div>
+    <!--input placeholder="Type a phrase" v-model="query" /-->
+    <section class="is-medium">
+    <div class="container">
+      <!--h3 class="subtitle">With Material Design Icons</h3-->
+      <b-field>
+          <b-input placeholder="Search..."
+              type="search"
+              icon="magnify"
+              icon-clickable
+              v-model="query"
+              @icon-click="searchIconClick">
+          </b-input>
+      </b-field>
+      <div class="card is-info has-text-primary is-family-primary has-text-weight-medium is-medium">
+      <buefy-search-compo v-bind:phrase="query"></buefy-search-compo>
+      </div>
+    </div>
+    </section>
+  </div>
+`;
+new Vue({
+  // eslint-disable-line
+  el: "#app",
+  data() {
+    return {
+      query: ""
+    };
+  },
+  components: { BuefySearchCompo },
+  template: templ,
+  methods: {
+    searchIconClick() {
+      alert("搜索栏输入中文或英文");
+    }
+  }
+});
+
+```
+
+`buefy-search-compo.js`:
+```javascript
+//
+const inst = axios.create({
+  // eslint-disable-line
+  baseURL: "http://173.82.240.230:1337/173.82.240.230",
+  timeout: 3000,
+  headers: {
+    UserAgent:
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17"
+  }
+});
+
+export default {
+  data: function() {
+    return { result: this.phrase };
+  },
+  props: ["phrase"],
+  watch: {
+    phrase: function(newVal, oldVal) {
+      // eslint-disable-line
+      // this.result = newVal;
+      if (newVal == "") return "";
+
+      this.result = "diggin...";
+
+      let serviceCode = "abc";
+      let query = newVal;
+      let params = new URLSearchParams();
+      params.append("query", query);
+      inst
+        // .post(`/${serviceCode}?query=${query}`)
+        .post(`/${serviceCode}`, params)
+        .then(resp => {
+          this.result = resp.data;
+        })
+        .catch(err => {
+          this.result = err.response;
+        });
+    }
+  },
+  computed: {
+    resultAlt: function() {
+      return this.phrase + (this.phrase ? ":" : "");
+    }
+  },
+  template: `
+  <div>
+  <!--{{ phrase }}- --> {{ resultAlt }} <br/> {{ result == "diggin..." ? "": result }}
+  <div v-html="result"></div>
+  </div>
+  `
+};
+
+```
+
+浏览器指向 `http://127.0.0.1:8080/buefy-search.html`, 用户输入 `good` ，浏览器显示good的同义词和反义词。
+
+![buefy-search](/img/buefy-search.png)
+
+## 结语
+算是自己的笔记，希望对想学习 `vue` 的网友有点用。有时间可能再把界面做的复杂点。
