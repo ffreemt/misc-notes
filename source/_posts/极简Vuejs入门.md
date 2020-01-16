@@ -624,7 +624,7 @@ export default {
 
 ```
 
-浏览器指向 `http://127.0.0.1:8080/app4.html`, 用户输入 `good` ，浏览器显示good的同义词和反义词。
+浏览器指向 `http://127.0.0.1:8080/axios-get.html`, 用户输入 `good` ，浏览器显示good的同义词和反义词。
 
 ![axiox-get](/img/axiox-get.png)
 
