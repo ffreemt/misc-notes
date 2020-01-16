@@ -537,7 +537,96 @@ export default {
 浏览器指向 `http://127.0.0.1:8080/app4.html`, 用户输入 `me` 时，`compoMsg` 和 phraseFromParen 随着变化（显示`Hello me/me!`）：
 ![app4](/img/app4.png)
 
-## axios
+## 组件实用 + `v-html`：基于 `axios` 的中英同义词接口
+到这里已经可以写个小小的实用网页了，尽管界面简陋（有时间后面会用buefy框架整个漂亮一点的界面）。下面用到的接口是个利用爬虫给出中英同义词的接口。组件`CompoAxiosGet.js` 的 `template` 里用了 `v-html`。
+
+`axios-get.html`:
+```html
+<div id="app"></div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script type="module" src="axios-get.js"></script>
+```
+
+`axios-get.js`:
+```javascript
+import CompoAxiosGet from "./CompoAxiosGet.js";
+
+const templ = `
+  <div>
+    <input placeholder="Type a phrase" v-model="query" />
+    <br/>
+    <compo-axios-get v-bind:phrase="query"></compo-axios-get>
+  </div>
+`;
+new Vue({ // eslint-disable-line
+  el: "#app",
+  data() {
+    return {
+      query: ""
+    };
+  },
+  components: { CompoAxiosGet },
+  template: templ
+});
+
+```
+
+`CompoAxiosGet.js`:
+```javascript
+//
+const inst = axios.create({ // eslint-disable-line
+  baseURL: "http://173.82.240.230:1337/173.82.240.230",
+  timeout: 3000,
+  headers: {
+    UserAgent:
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17"
+  }
+});
+
+export default {
+  data: function() {
+    return { result: this.phrase };
+  },
+  props: ["phrase"],
+  watch: {
+    phrase: function(newVal, oldVal) { // eslint-disable-line
+      // this.result = newVal;
+      if (newVal == "") return "";
+
+      let serviceCode = "abc";
+      let query = newVal;
+      let params = new URLSearchParams();
+      params.append("query", query);
+      inst
+        // .post(`/${serviceCode}?query=${query}`)
+        .post(`/${serviceCode}`, params)
+        .then(resp => {
+          this.result = resp.data;
+        })
+        .catch(err => {
+          this.result = err.response;
+        });
+    }
+  },
+  computed: {
+    resultAlt: function() {
+      return this.phrase + (this.phrase ? ":" : "");
+    }
+  },
+  template: `
+  <div>
+  {{ resultAlt }} <br/> {{ result }}
+  <div v-html="result"></div>
+  </div>
+  `
+};
+
+```
+
+浏览器指向 `http://127.0.0.1:8080/app4.html`, 用户输入 `good` ，浏览器显示good的同义词和反义词。
+
+![axiox-get](/img/axiox-get.png)
 
 
 (有时间再继续)
