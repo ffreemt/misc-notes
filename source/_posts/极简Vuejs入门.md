@@ -574,7 +574,6 @@ new Vue({ // eslint-disable-line
 
 `CompoAxiosGet.js`:
 ```javascript
-//
 const inst = axios.create({ // eslint-disable-line
   baseURL: "http://173.82.240.230:1337/173.82.240.230",
   timeout: 3000,
@@ -682,8 +681,7 @@ const templ = `
     </section>
   </div>
 `;
-new Vue({
-  // eslint-disable-line
+new Vue({ // eslint-disable-line
   el: "#app",
   data() {
     return {
@@ -703,9 +701,7 @@ new Vue({
 
 `buefy-search-compo.js`:
 ```javascript
-//
-const inst = axios.create({
-  // eslint-disable-line
+const inst = axios.create({ // eslint-disable-line
   baseURL: "http://173.82.240.230:1337/173.82.240.230",
   timeout: 3000,
   headers: {
@@ -720,8 +716,7 @@ export default {
   },
   props: ["phrase"],
   watch: {
-    phrase: function(newVal, oldVal) {
-      // eslint-disable-line
+    phrase: function(newVal, oldVal) { // eslint-disable-line
       // this.result = newVal;
       if (newVal == "") return "";
 
@@ -762,4 +757,4 @@ export default {
 ![buefy-search](/img/buefy-search.png)
 
 ## 结语
-算是自己的笔记，希望对想学习 `vue` 的网友有点用。有时间可能再把界面做的复杂点。
+算是自己的笔记，希望对想学习 `vue` 的网友有点用。有时间可能再把界面做得复杂点。
