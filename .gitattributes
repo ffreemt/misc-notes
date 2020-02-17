@@ -1,2 +1,3 @@
-*.css linguist-detectable=false
-*.js linguist-detectable=true
+*.css linguist-language=Html
+*.js linguist-language=Html
+*.styl linguist-language=Html
