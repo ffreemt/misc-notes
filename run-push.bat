@@ -5,7 +5,7 @@ IF "%1"=="" GOTO HAVE_0
 REM IF "%2"=="" GOTO HAVE_1
 REM IF "%3"=="" GOTO HAVE_2
 setlocal
-
+    git pull
     set comment=%*
     echo comment: %comment%
     REM git commit -am "%comment%" && git push
