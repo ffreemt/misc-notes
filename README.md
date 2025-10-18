@@ -1,6 +1,14 @@
 # misc-notes [![netify notes](https://img.shields.io/badge/netify-notes-brightgreen.svg)](http://misc-notes.netlify.com/2020/01/13/%E6%9E%81%E7%AE%80vuejs%E5%85%A5%E9%97%A8/)
 
-misc-notes is a Hexo-powered static blog that is published via Netlify. The repository contains both the Markdown content and the Hexo configuration and theme customisations used to generate the site.
+misc-notes is a Hexo-powered static blog that is published via Netlify. The repository contains both the Markdown content and the Hexo configuration and theme customisations used to generate the site. It is the working copy for the live site at [misc-notes.netlify.com](https://misc-notes.netlify.com/), which collects personal notes, quick references, and write-ups.
+
+## Purpose
+
+- Track the Markdown posts and accompanying assets that make up the misc-notes blog.
+- Keep Hexo and NexT theme configuration in source control so the site can be rebuilt anywhere.
+- Store helper scripts and docs for deploying the generated site via Netlify.
+
+This repository is not a reusable theme or npm package; clone it if you want to examine or run the blog locally.
 
 ## Overview
 
